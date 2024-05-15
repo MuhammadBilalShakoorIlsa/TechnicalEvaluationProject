@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController, ProfileTableViewCellProtocol{
     private let viewModel = ProfileViewModel()
     private let tableViewModel = UserProfileTableViewModel()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

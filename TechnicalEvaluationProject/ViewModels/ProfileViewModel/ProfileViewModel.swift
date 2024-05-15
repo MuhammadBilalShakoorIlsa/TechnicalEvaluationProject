@@ -27,7 +27,6 @@ class ProfileViewModel {
             }
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let users = try decoder.decode([User].self, from: data)
                 DispatchQueue.main.async {
                     self?.users = users

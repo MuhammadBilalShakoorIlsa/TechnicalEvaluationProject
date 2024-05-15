@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CommentTableViewCell: UITableViewCell {
     
@@ -30,7 +31,10 @@ class CommentTableViewCell: UITableViewCell {
         self.model = data
         nameLabel.text = data.name
         commentLabel.text = data.comment
-        profileImageView.image = UIImage(named: data.profileImageURL ?? "profile")
+        if let media = data.profileImageURL {
+            profileImageView.sd_setImage(with: URL(string: media), placeholderImage: UIImage(named: ""))
+            profileImageView.layer.cornerRadius = 25
+        }
         
     }
     

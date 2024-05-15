@@ -18,7 +18,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var postTextView: UITextView!
     weak var delegate: PostViewControllerProtocol?
-    
+    @IBOutlet weak var profileImageView: UIImageView!
     // MARK: - Properties
     private var viewModel = PostViewModel()
     private var user: User?
@@ -46,6 +46,7 @@ class PostViewController: UIViewController, UITextViewDelegate {
         postTextView.delegate = self
         postTextView.text = "What's happening"
         postTextView.textColor = UIColor.lightGray
+        profileImageView.layer.cornerRadius = 25
     }
     
     private func fetchUser() {

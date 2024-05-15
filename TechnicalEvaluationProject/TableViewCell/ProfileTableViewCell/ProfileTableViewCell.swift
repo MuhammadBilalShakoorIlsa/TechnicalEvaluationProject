@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 protocol ProfileTableViewCellProtocol : NSObjectProtocol {
     func didTapCommentButton(_ cell: ProfileTableViewCell)
@@ -27,6 +29,16 @@ class ProfileTableViewCell: UITableViewCell {
             configure()
         }
     }
+
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        toggleLikeStatus()
+        configureLikeButton()
+    }
+    
+    @IBAction func commentButtonTapped(_ sender: UIButton) {
+        delegate?.didTapCommentButton(self)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,6 +53,12 @@ class ProfileTableViewCell: UITableViewCell {
         guard let userData = user else { return }
         userNameLabel.text = userData.name
         descriptionLabel.text = userData.descrip
+        if let media = userData.profileImageURL {
+            profileImageView.sd_setImage(with: URL(string: media), placeholderImage: UIImage(named: ""))
+            profileImageView.layer.cornerRadius = 12
+        }
+        likeCountLabel.text = "\(userData.likeCount ?? 1)likes"
+        commentCountLabel.text = "\(userData.commentCount ?? 1)likes"
     }
     
     private func configureLikeButton() {
@@ -49,12 +67,10 @@ class ProfileTableViewCell: UITableViewCell {
         likeImageView.image = UIImage(named: likeImageName)
     }
     
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-        configureLikeButton()
-    }
-    
-    @IBAction func commentButtonTapped(_ sender: UIButton) {
-        delegate?.didTapCommentButton(self)
+    private func toggleLikeStatus() {
+        guard var userData = user else { return }
+        userData.isLiked = !(userData.isLiked ?? false)
+        user = userData
     }
     
 }

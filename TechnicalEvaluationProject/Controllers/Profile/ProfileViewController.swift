@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController, ProfileTableViewCellProtocol{
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     private let viewModel = ProfileViewModel()
     private let tableViewModel = UserProfileTableViewModel()
@@ -44,7 +45,7 @@ class ProfileViewController: UIViewController, ProfileTableViewCellProtocol{
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerNib(ProfileTableViewCell.reuseIdentifier)
-        
+        profileImageView.layer.cornerRadius = 25
         fetchUsers()
     }
     

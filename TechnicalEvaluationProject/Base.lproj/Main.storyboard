@@ -75,6 +75,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JMa-Qt-Bfl"/>
                     <connections>
+                        <outlet property="profileImageView" destination="lpI-Jr-8fu" id="Ceg-cm-I8d"/>
                         <outlet property="tableView" destination="8BL-jn-OH1" id="eVP-hf-Dgr"/>
                     </connections>
                 </viewController>
@@ -183,6 +184,7 @@
                     </view>
                     <connections>
                         <outlet property="postTextView" destination="NRF-a9-TsH" id="wJm-wX-3Kd"/>
+                        <outlet property="profileImageView" destination="wcP-6O-5lu" id="7RQ-wz-r6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohl-Sd-vU2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -209,7 +211,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="52" height="52"/>
+        <image name="profile" width="16.666666030883789" height="16.666666030883789"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

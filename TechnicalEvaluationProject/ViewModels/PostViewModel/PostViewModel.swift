@@ -26,7 +26,6 @@ class PostViewModel {
             }
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let user = try decoder.decode(User.self, from: data) // Only one user
                 DispatchQueue.main.async {
                     self?.user = user
